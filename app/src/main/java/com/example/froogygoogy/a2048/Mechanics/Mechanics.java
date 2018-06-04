@@ -8,7 +8,7 @@ public class Mechanics {
     int [][] grid = new int[4][4];
 
     public Mechanics() {
-        //grid = new  int[][]{{2,4,2,2},{0,2,2,4},{2,2,2,2},{2,0,0,4}};
+        grid = new  int[][]{{2,16,512,1024},{0,2,2,4},{2,2,2,2},{2,0,0,4}};
         AddNumber();
         AddNumber();
     }

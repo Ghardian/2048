@@ -70,7 +70,7 @@ public class Graphics {
         Paint paint = new Paint();
 
         paint.setColor(Color.BLACK);
-        paint.setTextSize(50);
+        paint.setTextSize(40);
         canvas.drawText(text, x , y, paint);
     }
 }

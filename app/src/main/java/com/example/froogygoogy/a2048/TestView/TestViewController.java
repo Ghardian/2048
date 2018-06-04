@@ -53,9 +53,9 @@ public class TestViewController  implements IGameController {
                     difY = startY - endY;
                     Log.d("Salida ","Valores  "+ startX + ","+ startY + "-" + endX + "," + endY + "-" + difX + "," + difY);
 
-                    if(Math.abs(difX)>Math.abs(difY))
+                    if(Math.abs(difX)>Math.abs(difY) && Math.abs(difX) > 0.0f && Math.abs(difY) > 0.0f)
                     {
-                        if(difX<0)
+                        if(difX < 0)
                         {
                             mechanics.slideRight();
                         }
@@ -66,7 +66,7 @@ public class TestViewController  implements IGameController {
                     }
                     else
                     {
-                        if(difY<0)
+                        if(difY < 0)
                         {
                             mechanics.slideDown();
                         }
@@ -95,7 +95,24 @@ public class TestViewController  implements IGameController {
                 int value = mechanics.getValue(i,j);
                 if(value!=0)
                 {
-                    graphics.drawText(""+value, (side*j+5)+side/3, (side*(i+2)+side*3/5));
+                    if(value < 10)
+                    {
+                        graphics.drawText(""+value, (side*j+5)+side/3, (side*(i+2)+side*3/5));
+                    }
+                    else if(value < 100)
+                    {
+                        graphics.drawText(""+value, (side*j+10)+side*1/5, (side*(i+2)+side*3/5));
+
+                    }
+                    else if(value < 1000)
+                    {
+                        graphics.drawText(""+value, (side*j+5)+side*1/6, (side*(i+2)+side*3/5));
+                    }
+                    else
+                    {
+                        graphics.drawText(""+value, (side*j+15), (side*(i+2)+side*3/5));
+
+                    }
                 }
             }
         }
