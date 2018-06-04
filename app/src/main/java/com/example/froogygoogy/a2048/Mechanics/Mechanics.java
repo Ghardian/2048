@@ -8,13 +8,13 @@ public class Mechanics {
     int [][] grid = new int[4][4];
 
     public Mechanics() {
-        grid = new  int[][]{{2,4,2,2},{0,2,2,4},{2,2,2,2},{2,0,0,4}};
-        //AddNumber();
-        //AddNumber();
+        //grid = new  int[][]{{2,4,2,2},{0,2,2,4},{2,2,2,2},{2,0,0,4}};
+        AddNumber();
+        AddNumber();
     }
-    public String getValue(int i, int j)
+    public int getValue(int i, int j)
     {
-        return ""+grid[i][j];
+        return grid[i][j];
     }
     private void AddNumber()
     {

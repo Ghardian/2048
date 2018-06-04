@@ -1,6 +1,7 @@
 package com.example.froogygoogy.a2048.TestView;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.example.froogygoogy.a2048.Framework.Graphics;
 import com.example.froogygoogy.a2048.Framework.IGameController;
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class TestViewController  implements IGameController {
     private float currentX,currentY,targetX;
+    private float startX,startY,endX,endY;
     private boolean touching;
     private float speed;
     private int width,height,side;
@@ -38,29 +40,42 @@ public class TestViewController  implements IGameController {
             switch (event.type)
             {
                 case TOUCH_DOWN:
+                    startX = event.x;
+                    startY = event.y;
                 case TOUCH_DRAGGED:
-                    touching = true;
-                    targetX = event.x;
                     break;
                 case TOUCH_UP:
-                    touching = false;
+                    endX = event.x;
+                    endY = event.y;
+
+                    float difX,difY;
+                    difX = startX - endX;
+                    difY = startY - endY;
+                    Log.d("Salida ","Valores  "+ startX + ","+ startY + "-" + endX + "," + endY + "-" + difX + "," + difY);
+
+                    if(Math.abs(difX)>Math.abs(difY))
+                    {
+                        if(difX<0)
+                        {
+                            mechanics.slideRight();
+                        }
+                        else
+                        {
+                            mechanics.slideLeft();
+                        }
+                    }
+                    else
+                    {
+                        if(difY<0)
+                        {
+                            mechanics.slideDown();
+                        }
+                        else
+                        {
+                            mechanics.slideUp();
+                        }
+                    }
                     break;
-            }
-        }
-        if(currentX < targetX)
-        {
-            currentX += deltaTime*speed;
-            if(currentX > targetX)
-            {
-                currentX = targetX;
-            }
-        }
-        else
-        {
-            currentX -= deltaTime*speed;
-            if(currentX < targetX)
-            {
-                currentX = targetX;
             }
         }
     }
@@ -77,10 +92,13 @@ public class TestViewController  implements IGameController {
             graphics.drawRect(side*3+5,side*(i+2),side-10,side-10,0xFFFFFFFF);
             for (int j = 0; j < 4; j++)
             {
-                graphics.drawText(mechanics.getValue(i,j), (side*j+5)+side/3, (side*(i+2)+side*3/5));
+                int value = mechanics.getValue(i,j);
+                if(value!=0)
+                {
+                    graphics.drawText(""+value, (side*j+5)+side/3, (side*(i+2)+side*3/5));
+                }
             }
         }
-
         return graphics.getFrameBuffer();
     }
 }
