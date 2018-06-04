@@ -24,5 +24,12 @@
             android:layout_height="wrap_content"
             android:onClick="testMechanics"
             android:text="Test Mechanics" />
+
+        <Button
+            android:id="@+id/testViewButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testView"
+            android:text="Test view" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

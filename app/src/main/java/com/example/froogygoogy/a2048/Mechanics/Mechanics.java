@@ -3,18 +3,20 @@ package com.example.froogygoogy.a2048.Mechanics;
 import android.util.Log;
 
 import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
 
 public class Mechanics {
     int [][] grid = new int[4][4];
 
     public Mechanics() {
+        grid = new  int[][]{{2,4,2,2},{0,2,2,4},{2,2,2,2},{2,0,0,4}};
         //AddNumber();
         //AddNumber();
-        slideUp();
     }
-    public void AddNumber()
+    public String getValue(int i, int j)
+    {
+        return ""+grid[i][j];
+    }
+    private void AddNumber()
     {
         LinkedList<int[]> options = new LinkedList();;
         for (int i = 0; i<4;i++)
@@ -76,79 +78,80 @@ public class Mechanics {
     }
     public void slideUp()
     {
-        int[][] test = new int[][]{{2,4,2,2},{0,2,2,4},{2,2,2,2},{2,0,0,4}};
         for(int i = 0; i < 4; i++)
         {
-            int[] row = new int[]{test[3][i], test[2][i], test[1][i], test[0][i]};
+            int[] row = new int[]{grid[3][i], grid[2][i], grid[1][i], grid[0][i]};
             Log.d("Total test",""+i + "-"+row[3]+row[2]+row[1]+row[0]);
             row = slide(row);
             row = combine(row);
             row = slide(row);
-            test[0][i] = row[3];
-            test[1][i] = row[2];
-            test[2][i] = row[1];
-            test[3][i] = row[0];
+            grid[0][i] = row[3];
+            grid[1][i] = row[2];
+            grid[2][i] = row[1];
+            grid[3][i] = row[0];
         }
+        AddNumber();
         for(int i = 0; i < 4; i++)
         {
-            int[] row = new int[]{test[0][i], test[1][i], test[2][i], test[3][i]};
+            int[] row = new int[]{grid[0][i], grid[1][i], grid[2][i], grid[3][i]};
             Log.d("Total Final ",""+row[0]+row[1]+row[2]+row[3]);
         }
+
     }
     public void slideDown()
     {
-        int[][] test = new int[][]{{2,4,2,2},{0,2,2,4},{2,2,2,2},{2,0,0,4}};
         for(int i = 0; i < 4; i++)//correcto
         {
-            int[] row = new int[]{test[0][i], test[1][i], test[2][i], test[3][i]};
+            int[] row = new int[]{grid[0][i], grid[1][i], grid[2][i], grid[3][i]};
             Log.d("Total test",""+i + "-"+row[0]+row[1]+row[2]+row[3]);
             row = slide(row);
             row = combine(row);
             row = slide(row);
-            test[0][i] = row[0];
-            test[1][i] = row[1];
-            test[2][i] = row[2];
-            test[3][i] = row[3];
+            grid[0][i] = row[0];
+            grid[1][i] = row[1];
+            grid[2][i] = row[2];
+            grid[3][i] = row[3];
         }
+        AddNumber();
         for(int i = 0; i < 4; i++)
         {
-            int[] row = new int[]{test[0][i], test[1][i], test[2][i], test[3][i]};
+            int[] row = new int[]{grid[0][i], grid[1][i], grid[2][i], grid[3][i]};
             Log.d("Total Final ",""+row[0]+row[1]+row[2]+row[3]);
         }
     }
     public void slideLeft()
     {
-        int[][] test = new int[][]{{2,4,2,2},{0,2,2,4},{2,2,2,2},{2,0,0,4}};
         for(int i = 0; i < 4; i++)//modo correcto para este
         {
-            int[] row = new int[]{test[i][3], test[i][2], test[i][1], test[i][0]};
+            int[] row = new int[]{grid[i][3], grid[i][2], grid[i][1], grid[i][0]};
             Log.d("Total",""+row[3]+row[2]+row[1]+row[0]);
             row = slide(row);
             row = combine(row);
             row = slide(row);
-            test[i] = new int[]{row[3], row[2], row[1], row[0]};
+            grid[i] = new int[]{row[3], row[2], row[1], row[0]};
         }
+        AddNumber();
         for(int i = 0; i < 4; i++)
         {
-            int[] row = new int[]{test[i][3], test[i][2], test[i][1], test[i][0]};
+            int[] row = new int[]{grid[i][3], grid[i][2], grid[i][1], grid[i][0]};
             Log.d("Total Final ",""+row[3]+row[2]+row[1]+row[0]);
         }
     }
     public void slideRight()
     {
-        int[][] test = new int[][]{{2,4,2,2},{0,2,2,4},{2,2,2,2},{2,0,0,4}};
         for(int i = 0; i < 4; i++)//modo correcto para este
         {
-            int[] row = new int[]{test[i][0], test[i][1], test[i][2], test[i][3]};
+            int[] row = new int[]{grid[i][0], grid[i][1], grid[i][2], grid[i][3]};
             Log.d("Total",""+row[0]+row[1]+row[2]+row[3]);
             row = slide(row);
             row = combine(row);
             row = slide(row);
-            test[i] = new int[]{row[0], row[1], row[2], row[3]};
+            grid[i] = new int[]{row[0], row[1], row[2], row[3]};
         }
+        AddNumber();
         for(int i = 0; i < 4; i++)
         {
-            int[] row = new int[]{test[i][0], test[i][1], test[i][2], test[i][3]};
+            int[] row = new int[]{grid[i][0], grid[i][1], grid[i][2], grid[i][3]};
             Log.d("Total Final ",""+row[0]+row[1]+row[2]+row[3]);
         }
     }

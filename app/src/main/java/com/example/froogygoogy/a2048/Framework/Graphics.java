@@ -2,6 +2,7 @@ package com.example.froogygoogy.a2048.Framework;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -63,5 +64,13 @@ public class Graphics {
         Rect dst =  new Rect(leftDst,(int)y,rightDst, ((int) (y+bitmap.getHeight())));;
 
         canvas.drawBitmap(bitmap,src,dst,null);
+    }
+    public  void drawText(String text, int x, int y )
+    {
+        Paint paint = new Paint();
+
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(50);
+        canvas.drawText(text, x , y, paint);
     }
 }
