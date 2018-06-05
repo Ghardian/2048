@@ -49,5 +49,26 @@
             android:layout_height="wrap_content"
             android:onClick="NormalMode"
             android:text="Normal Mode" />
+
+        <Button
+            android:id="@+id/hexaModeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="HexaMode"
+            android:text="Hexa Mode" />
+
+        <Button
+            android:id="@+id/modeThreeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="BaseThreeMode"
+            android:text="Mode Three" />
+
+        <Button
+            android:id="@+id/modeFiveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="BaseFiveMode"
+            android:text="Mode Five" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

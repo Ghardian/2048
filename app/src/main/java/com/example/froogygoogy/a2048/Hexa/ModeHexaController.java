@@ -1,4 +1,4 @@
-package com.example.froogygoogy.a2048.NormalMode;
+package com.example.froogygoogy.a2048.Hexa;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,29 +8,30 @@ import android.util.Log;
 import com.example.froogygoogy.a2048.Framework.Graphics;
 import com.example.froogygoogy.a2048.Framework.IGameController;
 import com.example.froogygoogy.a2048.Framework.TouchHandler;
-import com.example.froogygoogy.a2048.Mechanics.Mechanics;
+import com.example.froogygoogy.a2048.Mechanics.MechanicsBaseThree;
+import com.example.froogygoogy.a2048.Mechanics.MechanicsHexa;
 
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class NormalModeController implements IGameController {
+public class ModeHexaController implements IGameController {
     public static final String MY_PREFS_NAME = "GameData";
     private float startX,startY,endX,endY;
     private int width,height,side;
     private Graphics graphics;
-    private Mechanics mechanics;
+    private MechanicsHexa mechanics;
     private int MaxScore = 0;
     Context mContext;
-    public NormalModeController(int widthPixels, int heightPixels, int squareSide, Context context) {
+    public ModeHexaController(int widthPixels, int heightPixels, int squareSide, Context context) {
         this.width = widthPixels;
         this.height = heightPixels;
         this.side = squareSide;
         this.graphics = new Graphics(width,height);
-        mechanics = new Mechanics();
+        mechanics = new MechanicsHexa();
         mContext = context;
         SharedPreferences prefs = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);//Cargar datos del archivo de preferences
-        int max = prefs.getInt("MaxScore", -1);
+        int max = prefs.getInt("MaxScoreBase6", -1);
         if(max != -1)
         {
             MaxScore = max;
@@ -102,19 +103,10 @@ public class NormalModeController implements IGameController {
                     {
                         graphics.drawText(""+value, (side*j+5)+side/3, (side*(i+2)+side*3/5));
                     }
-                    else if(value < 100)
-                    {
-                        graphics.drawText(""+value, (side*j+10)+side*1/5, (side*(i+2)+side*3/5));
-
-                    }
-                    else if(value < 1000)
-                    {
-                        graphics.drawText(""+value, (side*j+5)+side*1/6, (side*(i+2)+side*3/5));
-                    }
                     else
                     {
-                        graphics.drawText(""+value, (side*j+15), (side*(i+2)+side*3/5));
-
+                        String exit = Integer.toHexString(value);
+                        graphics.drawText(exit.toUpperCase(), (side*j+5)+side/3, (side*(i+2)+side*3/5));
                     }
                 }
             }
@@ -128,7 +120,7 @@ public class NormalModeController implements IGameController {
             {
                 MaxScore = mechanics.getScore();
                 SharedPreferences.Editor editor = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();//guardar en el archivo preferences
-                editor.putInt("MaxScore", MaxScore);
+                editor.putInt("MaxScoreBase6", MaxScore);
                 editor.apply();
             }
             graphics.drawText("YOU WIN THE GAME",15,side*5/3);
@@ -139,7 +131,7 @@ public class NormalModeController implements IGameController {
             {
                 MaxScore = mechanics.getScore();
                 SharedPreferences.Editor editor = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();//guardar en el archivo preferences
-                editor.putInt("MaxScore", MaxScore);
+                editor.putInt("MaxScoreBase6", MaxScore);
                 editor.apply();
             }
             graphics.drawText("YOU LOST THE GAME",15,side*5/3);

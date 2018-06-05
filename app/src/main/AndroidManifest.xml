@@ -21,6 +21,9 @@
         <activity android:name=".TestView.TestView"/>
         <activity android:name=".TestNormalMode.TestNormalMode"/>
         <activity android:name=".NormalMode.NormalMode"/>
+        <activity android:name=".Hexa.ModeHexa"/>
+        <activity android:name=".BaseThree.ModeThree"/>
+        <activity android:name=".BaseFive.ModeFive"/>
     </application>
 
 </manifest>
