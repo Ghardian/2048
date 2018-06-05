@@ -112,7 +112,7 @@ public class MechanicsBaseThree {
                 score += a + b;
                 exit[i] = a + b;
                 exit[i-1] = 0;
-                if( (a+b) == 177147)
+                if( (a+b) == 6144)
                 {
                     win = true;
                 }

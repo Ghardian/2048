@@ -112,7 +112,7 @@ public class MechanicsBaseFive {
                 score += a + b;
                 exit[i] = a + b;
                 exit[i-1] = 0;
-                if( (a+b) == 48828125)
+                if( (a+b) == 10240)
                 {
                     win = true;
                 }
