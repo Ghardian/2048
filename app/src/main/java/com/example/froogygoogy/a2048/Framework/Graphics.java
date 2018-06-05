@@ -1,5 +1,6 @@
 package com.example.froogygoogy.a2048.Framework;
 
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -7,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.os.Build;
 
 import static android.graphics.Bitmap.Config.ARGB_8888;
 import static java.lang.System.out;
@@ -36,10 +38,11 @@ public class Graphics {
         canvas.drawRGB((color & 0xff0000) >> 16, (color & 0xff00) >> 8, color & 0xff);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void drawRect(float x, float y, float width, float height, int color) {
         paint.setColor(color);
         paint.setStyle(Paint.Style.FILL);
-        canvas.drawRect(x, y, x + width - 1, y + height - 1, paint);
+        canvas.drawRoundRect(x, y, x + width - 1, y + height - 1, 20,20, paint);
     }
 
     public int getWidth() {

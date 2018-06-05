@@ -86,13 +86,14 @@ public class TestViewController  implements IGameController {
 
         for(int i = 0; i < 4; i++)
         {
-            graphics.drawRect(side*0+5,side*(i+2),side-10,side-10,0xFFFFFFFF);
-            graphics.drawRect(side*1+5,side*(i+2),side-10,side-10,0xFFFFFFFF);
-            graphics.drawRect(side*2+5,side*(i+2),side-10,side-10,0xFFFFFFFF);
-            graphics.drawRect(side*3+5,side*(i+2),side-10,side-10,0xFFFFFFFF);
-            for (int j = 0; j < 4; j++)
+           for (int j = 0; j < 4; j++)
             {
                 int value = mechanics.getValue(i,j);
+                float color =(float)( Math.log(value)/Math.log(2));
+                //color = 0.0f;
+                int vcol = (int)((((255-color*255/11)+1)*((255-color*255/11)+1)*-1));
+                if(value!=0)Log.d("Color"," " + color + "~" + vcol + "~" + 0xFF00FF00);
+                graphics.drawRect(side*j+5,side*(i+2),side-10,side-10,vcol);
                 if(value!=0)
                 {
                     if(value < 10)

@@ -6,9 +6,10 @@ import java.util.LinkedList;
 
 public class Mechanics {
     int [][] grid = new int[4][4];
+    LinkedList<int[]> options;
 
     public Mechanics() {
-        grid = new  int[][]{{2,16,512,1024},{0,2,2,4},{2,2,2,2},{2,0,0,4}};
+        //grid = new  int[][]{{2,2048,2048,2048},{2048,2048,2048,2048},{2048,2048,2048,2048},{2048,2048,2048,2048}};
         AddNumber();
         AddNumber();
     }
@@ -16,9 +17,10 @@ public class Mechanics {
     {
         return grid[i][j];
     }
-    private void AddNumber()
+    private boolean areOptions()
     {
-        LinkedList<int[]> options = new LinkedList();;
+        boolean exit = false;
+        options = new LinkedList();;
         for (int i = 0; i<4;i++)
         {
             for (int j = 0;j<4;j++)
@@ -29,22 +31,30 @@ public class Mechanics {
                     dato[0]=i;
                     dato[1]=j;
                     options.add(dato);
+                    exit = true;
                 }
             }
         }
-        int pos = (int)(Math.random()*options.size());
-        Log.d("grid",""+pos);
-        int[] spot = options.get(pos);
-        double r = Math.random();
-        grid[spot[0]][spot[1]]= r > 0.9 ? 4 : 2;
-        for (int i = 0; i<4;i++)
+        return exit;
+    }
+    private void AddNumber()
+    {
+
+        if(areOptions())
         {
-            for (int j = 0;j<4;j++)
+            int pos = (int)(Math.random()*options.size());
+            Log.d("grid",""+pos);
+            int[] spot = options.get(pos);
+            double r = Math.random();
+            grid[spot[0]][spot[1]]= r > 0.95 ? 4 : 2;
+            for (int i = 0; i<4;i++)
             {
-               Log.d("grid","Valores "+ i + ","+ j+ " = "+grid[i][j]);
+                for (int j = 0;j<4;j++)
+                {
+                    Log.d("grid","Valores "+ i + ","+ j+ " = "+grid[i][j]);
+                }
             }
         }
-
     }
     private int[] slide(int[] col)
     {
