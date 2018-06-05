@@ -84,13 +84,6 @@ public class Mechanics {
             int[] spot = options.get(pos);
             double r = Math.random();
             grid[spot[0]][spot[1]]= r > 0.95 ? 4 : 2;
-            for (int i = 0; i<4;i++)
-            {
-                for (int j = 0;j<4;j++)
-                {
-                    Log.d("grid","Valores "+ i + ","+ j+ " = "+grid[i][j]);
-                }
-            }
         }
     }
     private int[] slide(int[] col)
@@ -133,7 +126,6 @@ public class Mechanics {
         if(!win && !lost) {
             for (int i = 0; i < 4; i++) {
                 int[] row = new int[]{grid[3][i], grid[2][i], grid[1][i], grid[0][i]};
-                Log.d("Total test", "" + i + "-" + row[3] + row[2] + row[1] + row[0]);
                 row = slide(row);
                 row = combine(row);
                 row = slide(row);
@@ -146,7 +138,6 @@ public class Mechanics {
             isGameOver();
             for (int i = 0; i < 4; i++) {
                 int[] row = new int[]{grid[0][i], grid[1][i], grid[2][i], grid[3][i]};
-                Log.d("Total Final ", "" + row[0] + row[1] + row[2] + row[3]);
             }
         }
     }
@@ -157,7 +148,6 @@ public class Mechanics {
             for (int i = 0; i < 4; i++)//correcto
             {
                 int[] row = new int[]{grid[0][i], grid[1][i], grid[2][i], grid[3][i]};
-                Log.d("Total test", "" + i + "-" + row[0] + row[1] + row[2] + row[3]);
                 row = slide(row);
                 row = combine(row);
                 row = slide(row);
@@ -170,7 +160,6 @@ public class Mechanics {
             isGameOver();
             for (int i = 0; i < 4; i++) {
                 int[] row = new int[]{grid[0][i], grid[1][i], grid[2][i], grid[3][i]};
-                Log.d("Total Final ", "" + row[0] + row[1] + row[2] + row[3]);
             }
         }
     }
@@ -181,7 +170,6 @@ public class Mechanics {
             for (int i = 0; i < 4; i++)//modo correcto para este
             {
                 int[] row = new int[]{grid[i][3], grid[i][2], grid[i][1], grid[i][0]};
-                Log.d("Total", "" + row[3] + row[2] + row[1] + row[0]);
                 row = slide(row);
                 row = combine(row);
                 row = slide(row);
@@ -191,7 +179,6 @@ public class Mechanics {
             isGameOver();
             for (int i = 0; i < 4; i++) {
                 int[] row = new int[]{grid[i][3], grid[i][2], grid[i][1], grid[i][0]};
-                Log.d("Total Final ", "" + row[3] + row[2] + row[1] + row[0]);
             }
         }
     }
@@ -202,7 +189,6 @@ public class Mechanics {
             for (int i = 0; i < 4; i++)//modo correcto para este
             {
                 int[] row = new int[]{grid[i][0], grid[i][1], grid[i][2], grid[i][3]};
-                Log.d("Total", "" + row[0] + row[1] + row[2] + row[3]);
                 row = slide(row);
                 row = combine(row);
                 row = slide(row);
@@ -212,7 +198,6 @@ public class Mechanics {
             isGameOver();
             for (int i = 0; i < 4; i++) {
                 int[] row = new int[]{grid[i][0], grid[i][1], grid[i][2], grid[i][3]};
-                Log.d("Total Final ", "" + row[0] + row[1] + row[2] + row[3]);
             }
         }
     }
