@@ -1,5 +1,7 @@
 package com.example.froogygoogy.a2048.NormalMode;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.util.Log;
 
@@ -10,19 +12,29 @@ import com.example.froogygoogy.a2048.Mechanics.Mechanics;
 
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class NormalModeController implements IGameController {
+    public static final String MY_PREFS_NAME = "GameData";
     private float startX,startY,endX,endY;
     private int width,height,side;
     private Graphics graphics;
     private Mechanics mechanics;
-
-    public NormalModeController(int widthPixels, int heightPixels, int squareSide) {
+    private int MaxScore = 0;
+    Context mContext;
+    public NormalModeController(int widthPixels, int heightPixels, int squareSide, Context context) {
         this.width = widthPixels;
         this.height = heightPixels;
         this.side = squareSide;
         this.graphics = new Graphics(width,height);
         mechanics = new Mechanics();
-
+        mContext = context;
+        SharedPreferences prefs = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        int max = prefs.getInt("MaxScore", -1);
+        if(max != -1)
+        {
+            MaxScore = max;
+        }
     }
 
     @Override
@@ -107,13 +119,29 @@ public class NormalModeController implements IGameController {
                 }
             }
         }
-        graphics.drawText("Score: "+ mechanics.getScore(),15,side);
+        graphics.drawText("Current Score: "+ mechanics.getScore(),15,side);
+        graphics.drawText("Max Score: "+ MaxScore,15,side/2);
+
         if(mechanics.isWin())
         {
+            if(mechanics.getScore()>MaxScore)
+            {
+                MaxScore = mechanics.getScore();
+                SharedPreferences.Editor editor = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putInt("MaxScore", MaxScore);
+                editor.apply();
+            }
             graphics.drawText("YOU WIN THE GAME",15,side*5/3);
         }
         else if(mechanics.isLost())
         {
+            if(mechanics.getScore()>MaxScore)
+            {
+                MaxScore = mechanics.getScore();
+                SharedPreferences.Editor editor = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putInt("MaxScore", MaxScore);
+                editor.apply();
+            }
             graphics.drawText("YOU LOST THE GAME",15,side*5/3);
         }
         return graphics.getFrameBuffer();

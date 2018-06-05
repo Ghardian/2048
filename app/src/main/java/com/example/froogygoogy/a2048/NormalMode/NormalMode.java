@@ -1,5 +1,6 @@
 package com.example.froogygoogy.a2048.NormalMode;
 
+import android.content.Context;
 import android.util.DisplayMetrics;
 
 import com.example.froogygoogy.a2048.Framework.GameActivity;
@@ -11,6 +12,8 @@ public class NormalMode extends GameActivity {
     protected IGameController buildGameController() {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        this.controller = new NormalModeController(displayMetrics.widthPixels,displayMetrics.heightPixels,displayMetrics.widthPixels/4);
+        Context mContext;
+        mContext = this;
+        this.controller = new NormalModeController(displayMetrics.widthPixels,displayMetrics.heightPixels,displayMetrics.widthPixels/4,mContext);
         return controller;    }
 }

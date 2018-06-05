@@ -16,34 +16,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testFramework"
-            android:text="Test Framework" />
+            android:text="Test Framework"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/testMechanicsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testMechanics"
-            android:text="Test Mechanics" />
+            android:text="Test Mechanics"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/testViewButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testView"
-            android:text="Test view" />
+            android:text="Test view"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/testNormalModeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testNormalMode"
-            android:text="Test Normal Mode" />
+            android:text="Test Normal Mode"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/normalModeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="NormalMode"
-            android:text="NormalMode" />
+            android:text="Normal Mode" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
