@@ -31,5 +31,12 @@
             android:layout_height="wrap_content"
             android:onClick="testView"
             android:text="Test view" />
+
+        <Button
+            android:id="@+id/testNormalModeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testNormalMode"
+            android:text="Test Normal Mode" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

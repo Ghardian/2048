@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.example.froogygoogy.a2048.TestFramework.TestFramework;
 import com.example.froogygoogy.a2048.TestMechanics.TestMechanics;
+import com.example.froogygoogy.a2048.TestNormalMode.TestNormalMode;
 import com.example.froogygoogy.a2048.TestView.TestView;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void testView(View view) {
         Intent intent = new Intent(this, TestView.class);
+        startActivity(intent);
+    }
+    public void testNormalMode(View view) {
+        Intent intent = new Intent(this, TestNormalMode.class);
         startActivity(intent);
     }
 }

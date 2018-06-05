@@ -1,4 +1,4 @@
-package com.example.froogygoogy.a2048.TestView;
+package com.example.froogygoogy.a2048.TestNormalMode;
 
 import android.graphics.Bitmap;
 import android.util.Log;
@@ -10,25 +10,18 @@ import com.example.froogygoogy.a2048.Mechanics.Mechanics;
 
 import java.util.List;
 
-public class TestViewController  implements IGameController {
-    private float currentX,currentY,targetX;
+public class TestNormalModeController implements IGameController {
     private float startX,startY,endX,endY;
-    private boolean touching;
-    private float speed;
     private int width,height,side;
     private Graphics graphics;
     private Mechanics mechanics;
 
 
 
-    public TestViewController(int widthPixels, int heightPixels, int squareSide) {
+    public TestNormalModeController(int widthPixels, int heightPixels, int squareSide) {
         this.width = widthPixels;
         this.height = heightPixels;
         this.side = squareSide;
-        this.currentX = (width/2)- (side/2);
-        this.currentY = height/2;
-        this.speed = width;
-        this.touching = false;
         this.graphics = new Graphics(width,height);
         mechanics = new Mechanics();
 
@@ -93,7 +86,7 @@ public class TestViewController  implements IGameController {
 
         for(int i = 0; i < 4; i++)
         {
-           for (int j = 0; j < 4; j++)
+            for (int j = 0; j < 4; j++)
             {
                 int value = mechanics.getValue(i,j);
                 float color =(float)( Math.log(value)/Math.log(2));
@@ -124,7 +117,17 @@ public class TestViewController  implements IGameController {
                 }
             }
         }
+        graphics.drawText("Score: "+ mechanics.getScore(),15,side);
+        if(mechanics.isWin())
+        {
+            graphics.drawText("YOU WIN THE GAME",15,side*5/3);
+        }
+        else if(mechanics.isLost())
+        {
+            graphics.drawText("YOU LOST THE GAME",15,side*5/3);
 
+        }
+        Log.d("Win","WIN " + mechanics.isWin() + " Lost " + mechanics.isLost());
         return graphics.getFrameBuffer();
     }
 }
