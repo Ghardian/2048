@@ -82,8 +82,8 @@ public class TestNormalModeController implements IGameController {
 
     @Override
     public Bitmap onDrawingRequested() {
-        graphics.clear(0xFF997777);
-
+        graphics.clear();
+//0xFFC28170
         for(int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 4; j++)
@@ -98,33 +98,33 @@ public class TestNormalModeController implements IGameController {
                 {
                     if(value < 10)
                     {
-                        graphics.drawText(""+value, (side*j+5)+side/3, (side*(i+2)+side*3/5));
+                        graphics.drawText(""+value, (side*j+5)+side/3, (side*(i+2)+side*3/5),80);
                     }
                     else if(value < 100)
                     {
-                        graphics.drawText(""+value, (side*j+10)+side*1/5, (side*(i+2)+side*3/5));
+                        graphics.drawText(""+value, (side*j+10)+side*1/5, (side*(i+2)+side*3/5),80);
 
                     }
                     else if(value < 1000)
                     {
-                        graphics.drawText(""+value, (side*j+5)+side*1/6, (side*(i+2)+side*3/5));
+                        graphics.drawText(""+value, (side*j+5)+side*1/6, (side*(i+2)+side*3/5),80);
                     }
                     else
                     {
-                        graphics.drawText(""+value, (side*j+15), (side*(i+2)+side*3/5));
+                        graphics.drawText(""+value, (side*j+15), (side*(i+2)+side*3/5),80);
 
                     }
                 }
             }
         }
-        graphics.drawText("Score: "+ mechanics.getScore(),15,side);
+        graphics.drawText("Score: "+ mechanics.getScore(),15,side,30);
         if(mechanics.isWin())
         {
-            graphics.drawText("YOU WIN THE GAME",15,side*5/3);
+            graphics.drawText("YOU WIN THE GAME",15,side*5/3,80);
         }
         else if(mechanics.isLost())
         {
-            graphics.drawText("YOU LOST THE GAME",15,side*5/3);
+            graphics.drawText("YOU LOST THE GAME",15,side*5/3,80);
 
         }
         Log.d("Win","WIN " + mechanics.isWin() + " Lost " + mechanics.isLost());

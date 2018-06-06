@@ -89,7 +89,7 @@ public class TestViewController  implements IGameController {
 
     @Override
     public Bitmap onDrawingRequested() {
-        graphics.clear(0xFF997777);
+        graphics.clear();
 
         for(int i = 0; i < 4; i++)
         {
@@ -105,20 +105,20 @@ public class TestViewController  implements IGameController {
                 {
                     if(value < 10)
                     {
-                        graphics.drawText(""+value, (side*j+5)+side/3, (side*(i+2)+side*3/5));
+                        graphics.drawText(""+value, (side*j+5)+side/3, (side*(i+2)+side*3/5),80);
                     }
                     else if(value < 100)
                     {
-                        graphics.drawText(""+value, (side*j+10)+side*1/5, (side*(i+2)+side*3/5));
+                        graphics.drawText(""+value, (side*j+10)+side*1/5, (side*(i+2)+side*3/5),80);
 
                     }
                     else if(value < 1000)
                     {
-                        graphics.drawText(""+value, (side*j+5)+side*1/6, (side*(i+2)+side*3/5));
+                        graphics.drawText(""+value, (side*j+5)+side*1/6, (side*(i+2)+side*3/5),80);
                     }
                     else
                     {
-                        graphics.drawText(""+value, (side*j+15), (side*(i+2)+side*3/5));
+                        graphics.drawText(""+value, (side*j+15), (side*(i+2)+side*3/5),80);
 
                     }
                 }

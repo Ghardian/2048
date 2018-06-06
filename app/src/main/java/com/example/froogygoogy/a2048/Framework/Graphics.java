@@ -26,7 +26,7 @@ public class Graphics {
         canvas = new Canvas(frameBuffer);
         paint = new Paint();
         paint.setTextAlign(Paint.Align.LEFT);
-        paint.setTextSize(20);
+        paint.setTextSize(30);
         paint.setTypeface(Typeface.DEFAULT_BOLD);
     }
 
@@ -34,8 +34,10 @@ public class Graphics {
         return frameBuffer;
     }
 
-    public void clear(int color) {
-        canvas.drawRGB((color & 0xff0000) >> 16, (color & 0xff00) >> 8, color & 0xff);
+    public void clear() {
+        //canvas.drawRGB((color>>16) & 0xff, (color>>8) & 0xff >> 8, color & 0xff);
+        canvas.drawRGB(51,158,179);
+        // /canvas.drawRGB(194,129,112);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -68,12 +70,12 @@ public class Graphics {
 
         canvas.drawBitmap(bitmap,src,dst,null);
     }
-    public  void drawText(String text, int x, int y )
+    public  void drawText(String text, int x, int y, int textSize )
     {
         Paint paint = new Paint();
 
-        paint.setColor(Color.BLACK);
-        paint.setTextSize(40);
-        canvas.drawText(text, x , y, paint);
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(textSize);
+        canvas.drawText(text, x+15 , y+5, paint);
     }
 }

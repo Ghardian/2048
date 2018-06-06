@@ -86,7 +86,7 @@ public class ModeHexaController implements IGameController {
 
     @Override
     public Bitmap onDrawingRequested() {
-        graphics.clear(0xFF997777);
+        graphics.clear();
 
         for(int i = 0; i < 4; i++)
         {
@@ -101,18 +101,20 @@ public class ModeHexaController implements IGameController {
                 {
                     if(value < 10)
                     {
-                        graphics.drawText(""+value, (side*j+5)+side/3, (side*(i+2)+side*3/5));
+                        graphics.drawText(""+value, (side*j+5)+side/3, (side*(i+2)+side*3/5),80);
                     }
                     else
                     {
                         String exit = Integer.toHexString(value);
-                        graphics.drawText(exit.toUpperCase(), (side*j+5)+side/3, (side*(i+2)+side*3/5));
+                        graphics.drawText(exit.toUpperCase(), (side*j+5)+side/3, (side*(i+2)+side*3/5),80);
                     }
                 }
             }
         }
-        graphics.drawText("Current Score: "+ mechanics.getScore(),15,side);
-        graphics.drawText("Max Score: "+ MaxScore,15,side/2);
+        graphics.drawText("2048",15,side,200);
+        graphics.drawText("Join the numbers and get to the F tile!",15,500,40);
+        graphics.drawText("Current Score: "+ mechanics.getScore(),550,side,50);
+        graphics.drawText("Max Score: "+ MaxScore,550,side/2,50);
 
         if(mechanics.isWin())
         {
@@ -123,7 +125,7 @@ public class ModeHexaController implements IGameController {
                 editor.putInt("MaxScoreBase6", MaxScore);
                 editor.apply();
             }
-            graphics.drawText("YOU WIN THE GAME",15,side*5/3);
+            graphics.drawText("YOU WIN THE GAME",15,side*5/3,80);
         }
         else if(mechanics.isLost())
         {
@@ -134,7 +136,7 @@ public class ModeHexaController implements IGameController {
                 editor.putInt("MaxScoreBase6", MaxScore);
                 editor.apply();
             }
-            graphics.drawText("YOU LOST THE GAME",15,side*5/3);
+            graphics.drawText("YOU LOST THE GAME",15,side*5/3,80);
         }
         return graphics.getFrameBuffer();
     }

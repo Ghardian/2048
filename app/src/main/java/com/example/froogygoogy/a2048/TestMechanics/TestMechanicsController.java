@@ -67,7 +67,7 @@ public class TestMechanicsController implements IGameController {
 
     @Override
     public Bitmap onDrawingRequested() {
-        graphics.clear(0xFF22FFFF);
+        graphics.clear();
         //graphics.drawRect(currentX,currentY,side,side,0xFFFF0000);
         return graphics.getFrameBuffer();
     }
