@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".MainActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,30 +47,38 @@
 
         <Button
             android:id="@+id/normalModeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="NormalMode"
-            android:text="Normal Mode" />
+            android:layout_width="656.2px"
+            android:layout_height="123.9px"
+            android:background="@drawable/normalmode"
+            android:layout_marginLeft="211.9px"
+            android:layout_marginTop="800px"
+            android:onClick="NormalMode" />
 
         <Button
             android:id="@+id/hexaModeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="HexaMode"
-            android:text="Hexa Mode" />
+            android:layout_width="656.2px"
+            android:layout_height="123.9px"
+            android:layout_marginLeft="211.9px"
+            android:layout_marginTop="75px"
+            android:background="@drawable/hexamode"
+            android:onClick="HexaMode" />
 
         <Button
             android:id="@+id/modeThreeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="BaseThreeMode"
-            android:text="Mode Three" />
+            android:layout_width="656.2px"
+            android:layout_height="123.9px"
+            android:layout_marginLeft="211.9px"
+            android:layout_marginTop="75px"
+            android:background="@drawable/threemode"
+            android:onClick="BaseThreeMode" />
 
         <Button
             android:id="@+id/modeFiveButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="BaseFiveMode"
-            android:text="Mode Five" />
+            android:layout_width="656.2px"
+            android:layout_height="123.9px"
+            android:layout_marginLeft="211.9px"
+            android:layout_marginTop="75px"
+            android:background="@drawable/fivemode"
+            android:onClick="BaseFiveMode" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
