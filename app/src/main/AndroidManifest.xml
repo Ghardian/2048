@@ -24,6 +24,9 @@
         <activity android:name=".Hexa.ModeHexa"/>
         <activity android:name=".BaseThree.ModeThree"/>
         <activity android:name=".BaseFive.ModeFive"/>
+        <activity android:name=".TestMechanicsBase.TestMechanicsBase"/>
+
+
     </application>
 
 </manifest>

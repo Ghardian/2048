@@ -11,6 +11,7 @@ import com.example.froogygoogy.a2048.Hexa.ModeHexa;
 import com.example.froogygoogy.a2048.NormalMode.NormalMode;
 import com.example.froogygoogy.a2048.TestFramework.TestFramework;
 import com.example.froogygoogy.a2048.TestMechanics.TestMechanics;
+import com.example.froogygoogy.a2048.TestMechanicsBase.TestMechanicsBase;
 import com.example.froogygoogy.a2048.TestNormalMode.TestNormalMode;
 import com.example.froogygoogy.a2048.TestView.TestView;
 
@@ -51,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void BaseFiveMode(View view) {
         Intent intent = new Intent(this, ModeFive.class);
+        startActivity(intent);
+    }
+    public void TestMechanicsBase(View view) {
+        Intent intent = new Intent(this, TestMechanicsBase.class);
         startActivity(intent);
     }
 }

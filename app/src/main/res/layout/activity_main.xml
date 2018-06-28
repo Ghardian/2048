@@ -80,5 +80,13 @@
             android:layout_marginTop="75px"
             android:background="@drawable/fivemode"
             android:onClick="BaseFiveMode" />
+        <Button
+            android:id="@+id/modeTestMechanicsBase"
+            android:layout_width="656.2px"
+            android:layout_height="123.9px"
+            android:layout_marginLeft="211.9px"
+            android:layout_marginTop="75px"
+            android:background="@drawable/fivemode"
+            android:onClick="TestMechanicsBase" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
