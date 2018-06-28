@@ -9,6 +9,7 @@ import com.example.froogygoogy.a2048.Framework.Graphics;
 import com.example.froogygoogy.a2048.Framework.IGameController;
 import com.example.froogygoogy.a2048.Framework.TouchHandler;
 import com.example.froogygoogy.a2048.Mechanics.Mechanics;
+import com.example.froogygoogy.a2048.Mechanics.MechanicsBaseTwo;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class NormalModeController implements IGameController {
     private float startX,startY,endX,endY;
     private int width,height,side;
     private Graphics graphics;
-    private Mechanics mechanics;
+    private MechanicsBaseTwo mechanics;
     private int MaxScore = 0;
     Context mContext;
     public NormalModeController(int widthPixels, int heightPixels, int squareSide, Context context) {
@@ -27,7 +28,7 @@ public class NormalModeController implements IGameController {
         this.height = heightPixels;
         this.side = squareSide;
         this.graphics = new Graphics(width,height);
-        mechanics = new Mechanics();
+        mechanics = new MechanicsBaseTwo();
         mContext = context;
         SharedPreferences prefs = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);//Cargar datos del archivo de preferences
         int max = prefs.getInt("MaxScore", -1);
