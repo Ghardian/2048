@@ -10,6 +10,7 @@ import com.example.froogygoogy.a2048.Framework.IGameController;
 import com.example.froogygoogy.a2048.Framework.TouchHandler;
 import com.example.froogygoogy.a2048.Mechanics.Mechanics;
 import com.example.froogygoogy.a2048.Mechanics.MechanicsBase;
+import com.example.froogygoogy.a2048.Mechanics.MechanicsBaseTwo;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class TestMechanicsBaseController implements IGameController {
     private float startX,startY,endX,endY;
     private int width,height,side;
     private Graphics graphics;
-    private MechanicsBase mechanics;
+    private MechanicsBaseTwo mechanics;
     private int MaxScore = 0;
     Context mContext;
     public TestMechanicsBaseController(int widthPixels, int heightPixels, int squareSide, Context context) {
@@ -28,7 +29,7 @@ public class TestMechanicsBaseController implements IGameController {
         this.height = heightPixels;
         this.side = squareSide;
         this.graphics = new Graphics(width,height);
-        mechanics = new MechanicsBase(16);//3, 5, 16, base three, five, hexa, the rest base 2
+        mechanics = new MechanicsBaseTwo();//3, 5, 16, base three, five, hexa, the rest base 2
         mContext = context;
         SharedPreferences prefs = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);//Cargar datos del archivo de preferences
         int max = prefs.getInt("MaxScoreTests", -1);

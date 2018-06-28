@@ -8,6 +8,7 @@ import android.util.Log;
 import com.example.froogygoogy.a2048.Framework.Graphics;
 import com.example.froogygoogy.a2048.Framework.IGameController;
 import com.example.froogygoogy.a2048.Framework.TouchHandler;
+import com.example.froogygoogy.a2048.Mechanics.MechanicsBaseHexa;
 import com.example.froogygoogy.a2048.Mechanics.MechanicsBaseThree;
 import com.example.froogygoogy.a2048.Mechanics.MechanicsHexa;
 
@@ -20,7 +21,7 @@ public class ModeHexaController implements IGameController {
     private float startX,startY,endX,endY;
     private int width,height,side;
     private Graphics graphics;
-    private MechanicsHexa mechanics;
+    private MechanicsBaseHexa mechanics;
     private int MaxScore = 0;
     Context mContext;
     public ModeHexaController(int widthPixels, int heightPixels, int squareSide, Context context) {
@@ -28,7 +29,7 @@ public class ModeHexaController implements IGameController {
         this.height = heightPixels;
         this.side = squareSide;
         this.graphics = new Graphics(width,height);
-        mechanics = new MechanicsHexa();
+        mechanics = new MechanicsBaseHexa();
         mContext = context;
         SharedPreferences prefs = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);//Cargar datos del archivo de preferences
         int max = prefs.getInt("MaxScoreBase6", -1);
