@@ -96,6 +96,7 @@ public class NormalModeController implements IGameController {
                 float color =(float)( Math.log(value)/Math.log(2));
                 //color = 0.0f;
                 int vcol = (int)((((255-color*255/11)+1)*((255-color*255/11)+1)*-1));//Hacer formula para colores -65536 = rojo(2) -16711936 = verde(2048)
+                //¿Esos 5,2, etc es la medida que hace que se separen entre si y cambien de tamaño?, si es asi hay que hacer alguna funcion que usando side, witdth etc cambie de tamaño por la resolucion
                 graphics.drawRect(side*j+5,side*(i+2),side-10,side-10,vcol);
                 if(value!=0)
                 {

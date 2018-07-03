@@ -22,22 +22,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void testFramework(View view) {
-        Intent intent = new Intent(this, TestFramework.class);
-        startActivity(intent);
-    }
-    public void testMechanics(View view) {
-        Intent intent = new Intent(this, TestMechanics.class);
-        startActivity(intent);
-    }
-    public void testView(View view) {
-        Intent intent = new Intent(this, TestView.class);
-        startActivity(intent);
-    }
-    public void testNormalMode(View view) {
-        Intent intent = new Intent(this, TestNormalMode.class);
-        startActivity(intent);
-    }
     public void NormalMode(View view) {
         Intent intent = new Intent(this, NormalMode.class);
         startActivity(intent);

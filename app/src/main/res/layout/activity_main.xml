@@ -2,82 +2,50 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/bg"
     tools:context=".MainActivity">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/testFrameworkButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="testFramework"
-            android:text="Test Framework"
-            android:visibility="gone" />
-
-        <Button
-            android:id="@+id/testMechanicsButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="testMechanics"
-            android:text="Test Mechanics"
-            android:visibility="gone" />
-
-        <Button
-            android:id="@+id/testViewButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="testView"
-            android:text="Test view"
-            android:visibility="gone" />
-
-        <Button
-            android:id="@+id/testNormalModeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="testNormalMode"
-            android:text="Test Normal Mode"
-            android:visibility="gone" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginStart="64dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/normalModeButton"
-            android:layout_width="656.2px"
-            android:layout_height="123.9px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/normalmode"
-            android:layout_marginLeft="211.9px"
-            android:layout_marginTop="800px"
             android:onClick="NormalMode" />
 
         <Button
             android:id="@+id/hexaModeButton"
-            android:layout_width="656.2px"
-            android:layout_height="123.9px"
-            android:layout_marginLeft="211.9px"
-            android:layout_marginTop="75px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/hexamode"
             android:onClick="HexaMode" />
 
         <Button
             android:id="@+id/modeThreeButton"
-            android:layout_width="656.2px"
-            android:layout_height="123.9px"
-            android:layout_marginLeft="211.9px"
-            android:layout_marginTop="75px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/threemode"
             android:onClick="BaseThreeMode" />
 
         <Button
             android:id="@+id/modeFiveButton"
-            android:layout_width="656.2px"
-            android:layout_height="123.9px"
-            android:layout_marginLeft="211.9px"
-            android:layout_marginTop="75px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/fivemode"
             android:onClick="BaseFiveMode" />
     </LinearLayout>
