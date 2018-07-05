@@ -25,10 +25,13 @@ public class NormalModeController implements IGameController {
     private int offsetWH = 0;
     private int offsetX = 5;
     private int offsetY = 2;
+    private int titleFont = 200;
     private int fontSizeExtraBig = 80;
     private int fontSizeBig = 75;
     private int fontSizeMedium = 70;
     private int fontSizeSmall = 50;
+    private int offsetXText=15;
+    private int offsetYText=500;
 
     Context mContext;
     public NormalModeController(int widthPixels, int heightPixels, int squareSide, Context context) {
@@ -97,7 +100,16 @@ public class NormalModeController implements IGameController {
     @Override
     public Bitmap onDrawingRequested() {
         graphics.clear();
-
+        if (width< 1080 && height<1920)
+        {
+            //Res 4"
+            fontSizeExtraBig = 40;
+            fontSizeBig = 30;
+            fontSizeMedium = 25;
+            fontSizeSmall = 15;
+            titleFont = 100;
+            offsetYText = 200;
+        }
         for(int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 4; j++)
@@ -117,28 +129,30 @@ public class NormalModeController implements IGameController {
                     int unit = 10;
                     if(value < unit)
                     {
-                        graphics.drawText(""+value, (side*j+(unit/2))+(side/3), (side*(i+2)+side*3/5),fontSizeExtraBig);
+                        graphics.drawText(""+value, (side*j+(unit/offsetY))+(side/(offsetX-offsetY)), (side*(i+offsetY)+side*(offsetX-offsetY)/offsetX),fontSizeExtraBig);
                     }
                     else if(value < (unit*10))
                     {
-                        graphics.drawText(""+value, (side*j+unit)+(side*1/5), (side*(i+2)+side*3/5),fontSizeBig);
+                        graphics.drawText(""+value, (side*j+unit)+(side*1/offsetX), (side*(i+offsetY)+side*(offsetX-offsetY)/offsetX),fontSizeBig);
 
                     }
                     else if(value < (unit*100))
                     {
-                        graphics.drawText(""+value, (side*j+(unit/2))+side*1/6, (side*(i+2)+side*3/5),fontSizeMedium);
+                        graphics.drawText(""+value, (side*j+(unit/offsetY))+side*1/((offsetX-offsetY)*offsetY), (side*(i+offsetY)+side*(offsetX-offsetY)/offsetX),fontSizeMedium);
                     }
                     else
                     {
-                        graphics.drawText(""+value, (side*j+(unit+5)), (side*(i+2)+side*3/5),fontSizeMedium);
+                        graphics.drawText(""+value, (side*j)-offsetY, (side*(i+offsetY)+side*((offsetX-offsetY)/offsetX)),fontSizeMedium);
+
                     }
                 }
             }
         }
-        graphics.drawText("2048",15,side,200);
-        graphics.drawText("Join the numbers and get to the 2048 tile!",15,500,fontSizeSmall);
-        graphics.drawText("Current Score: "+ mechanics.getScore(),(width-(width/2)),side,fontSizeSmall);
-        graphics.drawText("Max Score: "+ MaxScore,(width-(width/2)),side/2,fontSizeSmall);
+        graphics.drawText("2048",offsetXText,side,titleFont);
+        graphics.drawText("Join the numbers and get to the 2048 tile!",offsetXText,offsetYText,fontSizeSmall);
+        graphics.drawText("Current Score: "+ mechanics.getScore(),(width-(width/2)+offsetXText),side,fontSizeSmall);
+        graphics.drawText("Max Score: "+ MaxScore,(width-(width/2)+offsetXText),side/2,fontSizeSmall);
+
 
         if(mechanics.isWin())
         {
@@ -149,7 +163,7 @@ public class NormalModeController implements IGameController {
                 editor.putInt("MaxScore", MaxScore);
                 editor.apply();
             }
-            graphics.drawText("YOU WIN THE GAME",15,side*5/3,fontSizeExtraBig);
+            graphics.drawText("YOU WIN THE GAME",offsetXText,side*offsetX/(offsetX-offsetY),fontSizeExtraBig);
         }
         else if(mechanics.isLost())
         {
@@ -160,7 +174,7 @@ public class NormalModeController implements IGameController {
                 editor.putInt("MaxScore", MaxScore);
                 editor.apply();
             }
-            graphics.drawText("YOU LOST THE GAME",15,side*5/3,fontSizeExtraBig);
+            graphics.drawText("YOU LOST THE GAME",offsetXText,side*offsetX/(offsetX-offsetY),fontSizeExtraBig);
         }
         return graphics.getFrameBuffer();
     }
