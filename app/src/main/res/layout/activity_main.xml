@@ -2,8 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/bg"
     tools:context=".MainActivity">
 
@@ -11,34 +11,37 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginRight="64dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="300dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/normalModeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10px"
             android:background="@drawable/normalmode"
             android:onClick="NormalMode" />
 
         <Button
             android:id="@+id/hexaModeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10px"
             android:background="@drawable/hexamode"
             android:onClick="HexaMode" />
 
         <Button
             android:id="@+id/modeThreeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10px"
             android:background="@drawable/threemode"
             android:onClick="BaseThreeMode" />
 
@@ -46,6 +49,7 @@
             android:id="@+id/modeFiveButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="10px"
             android:background="@drawable/fivemode"
             android:onClick="BaseFiveMode" />
     </LinearLayout>

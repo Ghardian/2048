@@ -23,6 +23,14 @@ public class ModeHexaController implements IGameController {
     private Graphics graphics;
     private MechanicsBaseHexa mechanics;
     private int MaxScore = 0;
+    private int offsetWH = 0;
+    private int offsetX = 5;
+    private int offsetY = 2;
+    private int fontSizeExtraBig = 80;
+    private int fontSizeBig = 75;
+    private int fontSizeMedium = 70;
+    private int fontSizeSmall = 50;
+
     Context mContext;
     public ModeHexaController(int widthPixels, int heightPixels, int squareSide, Context context) {
         this.width = widthPixels;
@@ -37,6 +45,7 @@ public class ModeHexaController implements IGameController {
         {
             MaxScore = max;
         }
+        offsetWH = (width/64);
     }
 
     @Override
@@ -97,25 +106,28 @@ public class ModeHexaController implements IGameController {
                 float color =(float)( Math.log(value)/Math.log(2));
                 //color = 0.0f;
                 int vcol = (int)((((255-color*255/11)+1)*((255-color*255/11)+1)*-1));//Hacer formula para colores -65536 = rojo(2) -16711936 = verde(2048)
-                graphics.drawRect(side*j+5,side*(i+2),side-10,side-10,vcol);
+                //Dibujar casilla
+                graphics.drawRect(side*j+offsetX,side*(i+offsetY),side-offsetWH,side-offsetWH,vcol);
                 if(value!=0)
                 {
-                    if(value < 10)
+                    int unit=10;
+                    if(value < unit)
                     {
-                        graphics.drawText(""+value, (side*j+5)+side/3, (side*(i+2)+side*3/5),80);
+                        graphics.drawText(""+value, (side*j+(unit/2))+side/3, (side*(i+2)+side*3/5),fontSizeExtraBig);
                     }
                     else
                     {
                         String exit = Integer.toHexString(value);
-                        graphics.drawText(exit.toUpperCase(), (side*j+5)+side/3, (side*(i+2)+side*3/5),80);
+                        graphics.drawText(exit.toUpperCase(), (side*j+(unit/2))+side/3, (side*(i+2)+side*3/5),fontSizeExtraBig);
                     }
                 }
             }
         }
         graphics.drawText("2048",15,side,200);
-        graphics.drawText("Join the numbers and get to the F tile!",15,500,40);
-        graphics.drawText("Current Score: "+ mechanics.getScore(),550,side,50);
-        graphics.drawText("Max Score: "+ MaxScore,550,side/2,50);
+        graphics.drawText("Join the numbers and get to the F tile!",15,500,fontSizeSmall);
+        graphics.drawText("Current Score: "+ mechanics.getScore(),(width-(width/2)),side,fontSizeSmall);
+        graphics.drawText("Max Score: "+ MaxScore,(width-(width/2)),side/2,fontSizeSmall);
+
 
         if(mechanics.isWin())
         {
@@ -126,7 +138,7 @@ public class ModeHexaController implements IGameController {
                 editor.putInt("MaxScoreBase6", MaxScore);
                 editor.apply();
             }
-            graphics.drawText("YOU WIN THE GAME",15,side*5/3,80);
+            graphics.drawText("YOU WIN THE GAME",15,side*5/3,fontSizeExtraBig);
         }
         else if(mechanics.isLost())
         {
@@ -137,7 +149,7 @@ public class ModeHexaController implements IGameController {
                 editor.putInt("MaxScoreBase6", MaxScore);
                 editor.apply();
             }
-            graphics.drawText("YOU LOST THE GAME",15,side*5/3,80);
+            graphics.drawText("YOU LOST THE GAME",15,side*5/3,fontSizeExtraBig);
         }
         return graphics.getFrameBuffer();
     }
